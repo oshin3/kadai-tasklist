@@ -10,7 +10,9 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body data-turbolinks="false">
+    <%= render 'layouts/navbar' %>
+    
     <div class="container">
       <%= render 'layouts/flash_messages' %>
 
