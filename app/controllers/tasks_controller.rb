@@ -20,7 +20,6 @@ class TasksController < ApplicationController
 
   def create
     @task = current_user.tasks.build(tasks_params)
-    @task.user_id = current_user.id
     if @task.save
       flash[:success] = 'Task が正常に追加されました'
       redirect_to root_url
