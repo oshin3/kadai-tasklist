@@ -19,13 +19,12 @@ class TasksController < ApplicationController
   end
 
   def create
-    @tasks = current_user.tasks.build(tasks_params)
-
-    if @tasks.save
+    @task = current_user.tasks.build(tasks_params)
+    if @task.save
       flash[:success] = 'Task が正常に追加されました'
       redirect_to root_url
     else
-      @pagy, @tasks = pagy(current_user.tasks.order(id: :desc))
+      @pagy, @task = pagy(current_user.tasks.order(id: :desc))
       flash.now[:danger] = 'Task が追加されませんでした'
       render 'index'
     end
